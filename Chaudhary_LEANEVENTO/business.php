@@ -5,6 +5,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="CSS/leanevent.css"/>
     <title>LEANEVENTOS</title>
+    
+<script language="javascript" type="text/javascript">
+window.onbeforeunload = function()
+{
+    return "Are you sure want to close";
+}
+</script>
 </head>
 <body>
 <div id="container">

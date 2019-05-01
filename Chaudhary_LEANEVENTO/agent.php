@@ -12,6 +12,11 @@
 return confirm("Are you sure you want to delete this row?");
 
 }
+
+window.onbeforeunload = function()
+{
+    return "Are you sure want to close";
+}
     </script>
 </head>
 <body>

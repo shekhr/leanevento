@@ -50,7 +50,7 @@ alert("Thanks for subscribing to LEANEVENTOS");
    
 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
-     if (re.test(String(email.value)))
+     if (re.test(String(email.value).toLowerCase()))
   {
     
   }
@@ -126,6 +126,15 @@ function test_input($data) {
   return $data;
 }
 
+function email_validation($str) { 
+    return (!preg_match( 
+"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $str)) 
+        ? FALSE : TRUE; 
+} 
+  
+// Function call 
+
+
 $err=$firstname = $email = $lastname = $topic = $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -141,7 +150,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $email = test_input($_POST["email"]);
   }
+  if(!email_validation($email)) { 
     
+    echo "<script>window.alert('Invalid email address');</script>"; 
+    $err = 1;
+} 
+else { 
+    echo "Valid email address."; 
+} 
   if (empty($_POST["topic"])) {
     $err = 1;
   } else {
